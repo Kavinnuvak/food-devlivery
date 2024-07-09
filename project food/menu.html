@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <title>Menu - Food Delivery Website</title>
+    <style>
+      /* Inline styles for demonstration; move to style.css as needed */
+      body {
+        font-family: "Ubuntu Mono", monospace;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f4f4f4;
+      }
+      header {
+        background-color: #ff9800;
+        width: 100%;
+        padding: 1em;
+        text-align: center;
+        color: white;
+      }
+      main {
+        width: 100%;
+        max-width: 800px;
+        padding: 1em;
+      }
+      h2 {
+        color: #ff9800;
+        margin-top: 1em;
+      }
+      .menu-category {
+        margin-bottom: 2em;
+      }
+      .menu-item {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 1em;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .menu-item img {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #ddd;
+      }
+      .menu-item-content {
+        padding: 1em;
+      }
+      .menu-item h3 {
+        margin: 0;
+        font-size: 1.2em;
+        color: #333;
+      }
+      .menu-item p {
+        margin: 0.5em 0 0;
+        color: #666;
+      }
+      .price {
+        font-weight: bold;
+        color: #000;
+      }
+      .order-button {
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        font-size: 1em;
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+      .order-button:hover {
+        background-color: #e68900;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>Our Menu</h1>
+    </header>
+
+    <hr />
+
+    <!-- Main Content -->
+    <main>
+      <!-- Starters Section -->
+      <section class="menu-category" id="starters">
+        <h2>Starters</h2>
+        <div class="menu-item">
+          <img src="images/spring roll.jpg" alt="Spring Rolls" />
+          <div class="menu-item-content">
+            <h3>Spring Rolls <span class="price">$4.99</span></h3>
+            <p>Crispy rolls filled with vegetables.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/bread.jpg" alt="Garlic Bread" />
+          <div class="menu-item-content">
+            <h3>Garlic Bread <span class="price">$3.49</span></h3>
+            <p>Toasted bread with garlic and butter.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/samosa.jpg" alt="Samosa" />
+          <div class="menu-item-content">
+            <h3>Samosa <span class="price">$2.99</span></h3>
+            <p>Deep-fried pastry with spiced potatoes.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/peper chicken.jpg" alt="Chicken Wings" />
+          <div class="menu-item-content">
+            <h3>Chicken Wings <span class="price">$7.99</span></h3>
+            <p>Spicy chicken wings served with sauce.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Courses Section -->
+      <section class="menu-category" id="main-courses">
+        <h2>Main Courses</h2>
+        <div class="menu-item">
+          <img src="images/chickenn.jpg" alt="Chicken Biryani" />
+          <div class="menu-item-content">
+            <h3>Chicken Biryani <span class="price">$10.99</span></h3>
+            <p>Spiced rice with chicken.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/mutton.jpg" alt="Mutton Biryani" />
+          <div class="menu-item-content">
+            <h3>Mutton Biryani <span class="price">$12.99</span></h3>
+            <p>Flavorful rice with tender mutton.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/veg (2).jpg" alt="Veg Biryani" />
+          <div class="menu-item-content">
+            <h3>Veg Biryani <span class="price">$8.99</span></h3>
+            <p>Vegetable rice mix.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img
+            src="https://www.vegrecipesofindia.com/wp-content/uploads/2020/01/paneer-butter-masala-1-500x500.jpg"
+            alt="Paneer Butter Masala"
+          />
+          <div class="menu-item-content">
+            <h3>Paneer Butter Masala <span class="price">$9.99</span></h3>
+            <p>Cottage cheese in a creamy tomato gravy.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/chicken manch.jpg" alt="Chicken Tikka Masala" />
+          <div class="menu-item-content">
+            <h3>Chicken Tikka Masala <span class="price">$11.99</span></h3>
+            <p>Grilled chicken in spicy tomato sauce.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/bread2.jpg" alt="Naan Bread" />
+          <div class="menu-item-content">
+            <h3>Naan Bread <span class="price">$2.49</span></h3>
+            <p>Traditional Indian flatbread.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Desserts Section -->
+      <section class="menu-category" id="desserts">
+        <h2>Desserts</h2>
+        <div class="menu-item">
+          <img src="images/gulab.jpg" alt="Gulab Jamun" />
+          <div class="menu-item-content">
+            <h3>Gulab Jamun <span class="price">$4.49</span></h3>
+            <p>Sweet milk-solid-based dessert.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/ice cream.jpg" alt="Ice Cream Sundae" />
+          <div class="menu-item-content">
+            <h3>Ice Cream Sundae <span class="price">$5.99</span></h3>
+            <p>Ice cream topped with sauces and nuts.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/rasagulla.jpg" alt="Rasgulla" />
+          <div class="menu-item-content">
+            <h3>Rasgulla <span class="price">$3.99</span></h3>
+            <p>Ice cream topped with sauces and nuts.</p>
+            <button class="order-button" onclick="location.href='order.html'">
+              Order Now
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

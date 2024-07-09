@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-vC4LGVj8c8wmzT3tTPG4eMNm9ATKijJ3elBghF83VGnld7x2/+VCk0O+crN0Rj/jgqlVauK+TX6P88vFumKuGQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Ubuntu Mono", monospace;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f4f4f4;
+        min-height: 100vh;
+      }
+      header {
+        background-color: #ff9800;
+        width: 100%;
+        padding: 1em;
+        text-align: center;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #search-form {
+        margin-left: auto;
+        margin-right: 1em;
+        position: relative;
+      }
+      #search-input {
+        padding: 0.5em;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+      }
+      #search-button {
+        background-color: white;
+        color: #ff9800;
+        border: 1px solid #ff9800;
+        border-radius: 4px;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        font-size: 1em;
+      }
+      #search-button:hover {
+        background-color: #ff9800;
+        color: white;
+      }
+      #autocomplete-list {
+        position: absolute;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: white;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1;
+        width: 100%;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      .autocomplete-item {
+        padding: 0.5em;
+        cursor: pointer;
+        color: black;
+        background-color: white;
+      }
+      .autocomplete-item:hover {
+        background-color: #f1f1f1;
+      }
+      #navbar {
+        display: flex;
+        align-items: center;
+      }
+      #navcontent {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-left: auto;
+      }
+      #navcontent li {
+        margin: 0 1em;
+      }
+      #navcontent li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+      }
+      #nav-right {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      #nav-right li {
+        margin: 0 1em;
+      }
+      #nav-right li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+        border: 1px solid white;
+        border-radius: 4px;
+        padding: 0.5em 1em;
+      }
+      #nav-right li a:hover {
+        background-color: white;
+        color: #ff9800;
+        border: 1px solid #ff9800;
+      }
+      #product-gallery {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1em;
+        padding: 1em;
+        flex-grow: 1;
+      }
+      .product {
+        width: 30%;
+        max-width: 300px;
+        margin: 1em 0;
+        text-align: center;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      .product img {
+        width: 100%;
+        height: auto;
+      }
+      .product h2 {
+        font-size: 1.2em;
+        margin: 0.5em 0;
+      }
+      .product p {
+        color: #777;
+        margin: 0.5em 0 1em;
+      }
+      .order-button {
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 1em;
+        margin-bottom: 2em;
+      }
+      .order-button:hover {
+        background-color: #e68900;
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1em 0;
+        width: 100%;
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1 id="top">Smackee-site</h1>
+      <form id="search-form" action="javascript:void(0);">
+        <input
+          type="text"
+          id="search-input"
+          name="q"
+          placeholder="Search..."
+          aria-label="Search"
+        />
+        <button id="search-button" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+        <!-- Autocomplete suggestions will appear here -->
+        <div id="autocomplete-list"></div>
+      </form>
+      <nav id="navbar">
+        <ul id="navcontent">
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <ul id="nav-right">
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <hr />
+
+    <!-- "Available Items" Heading -->
+    <h2 id="available-items">Available Items</h2>
+    <h3 id="available-items">Explore our delicious offerings</h3>
+
+    <!-- Product Gallery Section -->
+    <div id="product-gallery">
+      <div class="product" data-name="Spring Rolls">
+        <img src="images/spring roll.jpg" alt="Spring Rolls" />
+        <h2>Spring Rolls</h2>
+        <p>Price: $4.99</p>
+      </div>
+      <div class="product" data-name="Garlic Bread">
+        <img src="images/bread.jpg" alt="Garlic Bread" />
+        <h2>Garlic Bread</h2>
+        <p>Price: $3.49</p>
+      </div>
+      <div class="product" data-name="Chicken Biryani">
+        <img src="images/chickenn.jpg" alt="Chicken Biryani" />
+        <h2>Chicken Biryani</h2>
+        <p>Price: $10.99</p>
+      </div>
+      <div class="product" data-name="Mutton Biryani">
+        <img src="images/mutton.jpg" alt="Mutton Biryani" />
+        <h2>Mutton Biryani</h2>
+        <p>Price: $12.99</p>
+      </div>
+      <div class="product" data-name="Veg Biryani">
+        <img src="images/veg (2).jpg" alt="Veg Biryani" />
+        <h2>Veg Biryani</h2>
+        <p>Price: $8.99</p>
+      </div>
+      <div class="product" data-name="Paneer Butter Masala">
+        <img
+          src="https://www.vegrecipesofindia.com/wp-content/uploads/2020/01/paneer-butter-masala-1-500x500.jpg"
+          alt="Paneer Butter Masala"
+        />
+        <h2>Paneer Butter Masala</h2>
+        <p>Price: $9.99</p>
+      </div>
+      <div class="product" data-name="Gulab Jamun">
+        <img src="images/gulab.jpg" alt="Gulab Jamun" />
+        <h2>Gulab Jamun</h2>
+        <p>Price: $4.49</p>
+      </div>
+      <div class="product" data-name="Ice Cream Sundae">
+        <img src="images/ice cream.jpg" alt="Ice Cream Sundae" />
+        <h2>Ice Cream Sundae</h2>
+        <p>Price: $5.99</p>
+      </div>
+      <div class="product" data-name="Mango Lassi">
+        <img src="images/mango (2).jpg" alt="Mango Lassi" />
+        <h2>Mango Lassi</h2>
+        <p>Price: $3.99</p>
+      </div>
+      <div class="product" data-name="Chai Tea">
+        <img src="images/tea.jpg" alt="Chai Tea" />
+        <h2>Chai Tea</h2>
+        <p>Price: $2.99</p>
+      </div>
+    </div>
+
+    <!-- Order Now Button at Bottom -->
+    <button class="order-button" onclick="location.href='order.html'">
+      ORDER NOW
+    </button>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2020-2024 Food Delivery Website. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      // JavaScript for autocomplete
+      document
+        .getElementById("search-input")
+        .addEventListener("input", function () {
+          const input = this.value.toLowerCase();
+          const productNames = [
+            "Spring Rolls",
+            "Garlic Bread",
+            "Chicken Biryani",
+            "Mutton Biryani",
+            "Veg Biryani",
+            "Paneer Butter Masala",
+            "Gulab Jamun",
+            "Ice Cream Sundae",
+            "Mango Lassi",
+            "Chai Tea",
+          ];
+          const list = document.getElementById("autocomplete-list");
+          list.innerHTML = ""; // Clear previous suggestions
+
+          if (input.length > 0) {
+            productNames.forEach((name) => {
+              if (name.toLowerCase().includes(input)) {
+                const suggestion = document.createElement("div");
+                suggestion.className = "autocomplete-item";
+                suggestion.textContent = name;
+                suggestion.addEventListener("click", function () {
+                  document.getElementById("search-input").value =
+                    this.textContent;
+                  list.innerHTML = ""; // Clear suggestions
+                });
+                list.appendChild(suggestion);
+              }
+            });
+          }
+        });
+    </script>
+  </body>
+</html>

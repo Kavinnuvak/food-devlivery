@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <title>Order - Food Delivery Website</title>
+    <style>
+      /* Inline styles for demonstration; move to style.css as needed */
+      body {
+        font-family: "Ubuntu Mono", monospace;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      header {
+        background-color: #ff9800;
+        width: 100%;
+        padding: 1em;
+        text-align: center;
+        color: white;
+      }
+      main {
+        width: 100%;
+        max-width: 800px;
+        padding: 1em;
+      }
+      .order-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 1em;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group label {
+        margin-bottom: 0.5em;
+        font-weight: bold;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 0.5em;
+        font-size: 1em;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
+      .form-group textarea {
+        resize: vertical;
+      }
+      .form-group input[type="submit"] {
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .form-group input[type="submit"]:hover {
+        background-color: #e68900;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>Order Your Food</h1>
+    </header>
+
+    <hr />
+
+    <!-- Main Content -->
+    <main>
+      <form class="order-form" action="submit_order.html" method="post">
+        <!-- Personal Details Section -->
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="address">Delivery Address:</label>
+          <textarea id="address" name="address" rows="3" required></textarea>
+        </div>
+
+        <!-- Order Details Section -->
+        <div class="form-group">
+          <label for="item">Select Item:</label>
+          <select id="item" name="item" required>
+            <option value="spring_rolls">Spring Rolls</option>
+            <option value="garlic_bread">Garlic Bread</option>
+            <option value="chicken_biryani">Chicken Biryani</option>
+            <option value="mutton_biryani">Mutton Biryani</option>
+            <option value="veg_biryani">Veg Biryani</option>
+            <option value="paneer_butter_masala">Paneer Butter Masala</option>
+            <option value="gulab_jamun">Gulab Jamun</option>
+            <option value="ice_cream_sundae">Ice Cream Sundae</option>
+            <option value="mango_lassi">Mango Lassi</option>
+            <option value="chai_tea">Chai Tea</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" min="1" required />
+        </div>
+
+        <!-- Payment Method Section -->
+        <div class="form-group">
+          <label for="payment">Payment Method:</label>
+          <select id="payment" name="payment" required>
+            <option value="credit_card">Credit Card</option>
+            <option value="debit_card">Debit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="cash_on_delivery">Cash on Delivery</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+          <input type="submit" value="Place Order" />
+        </div>
+      </form>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2020-2024 Food Delivery Website. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
